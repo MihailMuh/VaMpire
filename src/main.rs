@@ -1,9 +1,23 @@
 use vampire_file::VaMpireFile;
 
 mod vampire_file;
+mod utils;
 
 fn main() {
     let vampire_file = VaMpireFile::get("Vampirefile");
 
-    println!("{}", vampire_file.to_string());
+    println!(r"
+ ██▒   █▓  ▄▄▄        ███▄ ▄███▓  ██▓███    ██▓  ██▀███   ▓█████
+▓██░   █▒ ▒████▄     ▓██▒▀█▀ ██▒ ▓██░  ██ ▒▓██▒ ▓██ ▒ ██ ▒▓█   ▀
+ ▓██  █▒░ ▒██  ▀█▄   ▓██    ▓██░ ▓██░ ██▓ ▒▒██▒ ▓██ ░▄█  ▒▒███
+  ▒██ █░░ ░██▄▄▄▄██  ▒██    ▒██  ▒██▄█▓▒  ▒░██░ ▒██▀▀█▄   ▒▓█  ▄
+   ▒▀█░    ▓█   ▓██▒ ▒██▒   ░██▒ ▒██▒ ░   ░░██░ ░██▓ ▒██ ▒░▒████▒
+   ░ ▐░    ▒▒   ▓▒█░ ░ ▒░   ░  ░ ▒▓▒░ ░   ░░▓   ░ ▒▓ ░▒▓ ░░░ ▒░ ░
+   ░ ░░     ▒   ▒▒ ░  ░ ░      ░ ░▒ ░       ▒ ░   ░▒ ░ ▒ ░ ░ ░  ░
+     ░░     ░   ▒     ░     ░    ░░         ▒ ░   ░░   ░     ░
+      ░        ░  ░           ░           ░     ░         ░  ░
+     ░
+    ");
+
+    println!("Parameters to use:\n{}", vampire_file.to_string());
 }

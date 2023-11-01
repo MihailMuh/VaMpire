@@ -1,5 +1,6 @@
-use std::collections::HashMap;
 use configparser::ini::Ini;
+
+use crate::utils::{get, parse};
 
 pub struct VaMpireFile {
     username: String,
@@ -13,7 +14,7 @@ pub struct VaMpireFile {
 impl VaMpireFile {
     pub fn to_string(&self) -> String {
         format!(
-            "username: {}\ncpu: {}\nram: {}GB\ndisk: {}GB",
+            "   username: {}\n   password: ***\n   cpu: {}\n   ram: {}GB\n   disk: {}GB",
             &self.username, &self.cpu, &self.ram, &self.disk
         )
     }
@@ -28,17 +29,9 @@ impl VaMpireFile {
         VaMpireFile {
             username: get(content, "username"),
             password: get(content, "password"),
-            cpu: get(content, "cpu").parse().unwrap_or_default(),
-            ram: get(content, "ram").parse().unwrap_or_default(),
-            disk: get(content, "disk").parse().unwrap_or_default(),
+            cpu: parse(content, "cpu"),
+            ram: parse(content, "ram"),
+            disk: parse(content, "disk"),
         }
-    }
-}
-
-fn get(hashmap: &HashMap<String, Option<String>>, key: &str) -> String {
-    if !hashmap.contains_key(key) {
-        "".to_string()
-    } else {
-        hashmap[key].clone().unwrap_or_default()
     }
 }
